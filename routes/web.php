@@ -14,4 +14,6 @@
 Route::get('/', "IndexController@indexAction");
 
 Route::get('/question', "IndexController@questionAction");
+Route::get('/response', "IndexController@responseAction");
+
 Route::get('/ranking', "IndexController@rankingAction");
