@@ -11,23 +11,27 @@ class IndexController extends Controller
 {
     public function indexAction($value='')
     {
-
       return view('welcome');
     }
     public function questionAction($value='')
     {
-      $questions = [
-        [1, 'hola mundo 01', 'hola mundo 01'],
-        [2, 'hola mundo 01', 'hola mundo 01'],
-        [3, 'hola mundo 01', 'hola mundo 01'],
-        [4, 'hola mundo 01', 'hola mundo 01'],
-      ];
+      $questions = Question::all();
       return view('question', compact('questions'));
     }
 
     public function responseAction(Request $request)
     {
+      $parameters = $request->all();
 
+      foreach ($parameters as $key => $value) {
+        $response = [
+          'value' => $value,
+          'description' => $value,
+          'question_id' => $key,
+          'user_id' => 1,
+        ];
+        Response::create($response);
+      }
       return view('thanks');
     }
 

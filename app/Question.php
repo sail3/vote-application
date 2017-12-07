@@ -2,13 +2,12 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class Question extends Authenticatable
+class Question extends Model
 {
-    use Notifiable;
 
+    public $table = 'question';
     /**
      * The attributes that are mass assignable.
      *
@@ -24,5 +23,6 @@ class Question extends Authenticatable
      * @var array
      */
     protected $hidden = [
+      'id',
     ];
 }
