@@ -17,6 +17,14 @@ class CreateResponseTable extends Migration
             $table->increments('id');
             $table->string('value');
             $table->string('description');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')
+              ->on('users')
+              ->onDelete('restrict');
+            $table->integer('question_id')->unsigned();
+            $table->foreign('question_id')->references('id')
+              ->on('question')
+              ->onDelete('restrict');
             $table->timestamps();
         });
     }
