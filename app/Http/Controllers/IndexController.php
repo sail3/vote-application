@@ -22,15 +22,14 @@ class IndexController extends Controller
     public function responseAction(Request $request)
     {
       $parameters = $request->all();
-
+      unset($parameters['button']);
       foreach ($parameters as $key => $value) {
-        $response = [
-          'value' => $value,
-          'description' => $value,
-          'question_id' => $key,
-          'user_id' => 1,
-        ];
-        Response::create($response);
+        $response = new Response();
+        $response->value = $value;
+        $response->description = $value;
+        $response->question_id = $key;
+        $response->user_id = 1;
+        $response->save();
       }
       return view('thanks');
     }
