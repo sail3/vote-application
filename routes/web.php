@@ -11,15 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', "IndexController@indexAction");
 
-Route::get('/question', function ()
-{
-  return view('question');
-});
-Route::get('/ranking', function ()
-{
-  return view('ranking');
-});
+Route::get('/question', "IndexController@questionAction");
+Route::get('/ranking', "IndexController@rankingAction");
